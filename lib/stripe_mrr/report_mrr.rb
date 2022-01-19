@@ -31,7 +31,7 @@ module StripeMRR
         acc << lines.join("\t")
       end.join("\n")
 
-      puts ['name', 'email', 'MRR (Gross)', 'MRR (discounted)', 'subscription statuses'].join("\t")
+      puts ['name', 'email', 'MRR (Gross)', 'MRR (discounted)', 'status'].join("\t")
       puts result
     end
 

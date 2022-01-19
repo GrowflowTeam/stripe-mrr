@@ -25,7 +25,7 @@ module StripeMRR
     end
 
     def sub_statuses
-      subscriptions.map(&:status).join(',')
+      subscriptions.map(&:status).uniq.join(',')
     end
 
     private
