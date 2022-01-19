@@ -33,7 +33,7 @@ module StripeMRR
     end
 
     def collection_resume_date
-      subscriptions.map{|sub| sub.pause_collection&.resumes_at}.compact.reject(&:empty?).join(',')
+      subscriptions.map{|sub| sub.pause_collection&.resumes_at}.compact.join(',')
     end
 
     private
