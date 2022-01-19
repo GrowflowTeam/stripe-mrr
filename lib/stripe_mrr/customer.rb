@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'forwardable'
+require 'date'
 
 module StripeMRR
   # The customer class will wrap calls to the customer object
@@ -33,7 +34,7 @@ module StripeMRR
     end
 
     def collection_resume_date
-      subscriptions.map{|sub| sub.pause_collection&.resumes_at}.compact.join(',')
+      subscriptions.map{|sub| sub.pause_collection&.resumes_at}.compact.map{|ts| Time.at(ts).to_datetime}.map{|dt| dt.strftime('%Y-%m-%dT%H:%M:%S.%L%z')}.join(',')
     end
 
     private
