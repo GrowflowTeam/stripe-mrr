@@ -22,6 +22,10 @@ module StripeMRR
       gross_mrr - discount_amount
     end
 
+    def status
+      @subscription.status
+    end
+
     private
 
     def discount

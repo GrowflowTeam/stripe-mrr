@@ -12,7 +12,8 @@ module StripeMRR
           customer_name: customer.name,
           customer_email: customer.email,
           gross_mrr: customer.gross_mrr,
-          discounted_mrr: customer.discounted_mrr
+          discounted_mrr: customer.discounted_mrr,
+          sub_statuses: customer.sub_statuses
         }
       end
     end
@@ -25,11 +26,12 @@ module StripeMRR
         lines << item[:customer_email]
         lines << format('$%.2f', (item[:gross_mrr] / 100)).to_s
         lines << format('$%.2f', (item[:discounted_mrr] / 100)).to_s
+        lines << item[:sub_statuses]
 
         acc << lines.join("\t")
       end.join("\n")
 
-      puts ['name', 'email', 'MRR (Gross)', 'MRR (discounted)'].join("\t")
+      puts ['name', 'email', 'MRR (Gross)', 'MRR (discounted)', 'subscription statuses'].join("\t")
       puts result
     end
 

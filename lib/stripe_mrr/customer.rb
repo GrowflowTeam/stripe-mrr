@@ -24,6 +24,10 @@ module StripeMRR
       mrr - discount_amount
     end
 
+    def sub_statuses
+      subscriptions.map(&:status).join(',')
+    end
+
     private
 
     def subscriptions
