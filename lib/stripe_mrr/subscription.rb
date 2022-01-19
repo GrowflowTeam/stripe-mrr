@@ -26,6 +26,10 @@ module StripeMRR
       @subscription.status
     end
 
+    def pause_collection
+      @subscription.pause_collection
+    end
+
     private
 
     def discount

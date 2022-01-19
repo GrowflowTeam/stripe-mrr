@@ -13,7 +13,9 @@ module StripeMRR
           customer_email: customer.email,
           gross_mrr: customer.gross_mrr,
           discounted_mrr: customer.discounted_mrr,
-          sub_statuses: customer.sub_statuses
+          sub_statuses: customer.sub_statuses,
+          pause_collection_behavior: customer.pause_collection_behavior,
+          collection_resume_date: customer.collection_resume_date
         }
       end
     end
@@ -27,11 +29,13 @@ module StripeMRR
         lines << format('$%.2f', (item[:gross_mrr] / 100)).to_s
         lines << format('$%.2f', (item[:discounted_mrr] / 100)).to_s
         lines << item[:sub_statuses]
+        lines << item[:pause_collection_behavior]
+        lines << item[:collection_resume_date]
 
         acc << lines.join("\t")
       end.join("\n")
 
-      puts ['name', 'email', 'MRR (Gross)', 'MRR (discounted)', 'status'].join("\t")
+      puts ['name', 'email', 'MRR (Gross)', 'MRR (discounted)', 'status', 'pause behavior', 'collection resume date'].join("\t")
       puts result
     end
 

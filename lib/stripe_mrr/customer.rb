@@ -28,6 +28,14 @@ module StripeMRR
       subscriptions.map(&:status).uniq.join(',')
     end
 
+    def pause_collection_behavior
+      subscriptions.map{|sub| sub.pause_collection&.behavior}.join(',')
+    end
+
+    def collection_resume_date
+      subscriptions.map{|sub| sub.pause_collection&.resumes_at}.join(',')
+    end
+
     private
 
     def subscriptions
