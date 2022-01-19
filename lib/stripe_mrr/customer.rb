@@ -29,11 +29,11 @@ module StripeMRR
     end
 
     def pause_collection_behavior
-      subscriptions.map{|sub| sub.pause_collection&.behavior}.join(',')
+      subscriptions.map{|sub| sub.pause_collection&.behavior}.reject(&:empty?).join(',')
     end
 
     def collection_resume_date
-      subscriptions.map{|sub| sub.pause_collection&.resumes_at}.join(',')
+      subscriptions.map{|sub| sub.pause_collection&.resumes_at}.reject(&:empty?).join(',')
     end
 
     private
